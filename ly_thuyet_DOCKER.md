@@ -152,9 +152,9 @@ docker rmi node-mysql-image:latest
 
 ## How to push image to your Docker Hub ?
 -Login, create a repository(public/private)
-docker tag node-mysql-image:v1.0.0 sunlight4d/node-mysql-image:v1.0.0
+docker tag node-mysql-image:v1.0.0 tuanflute275/node-mysql-image:v1.0.0
 
-docker push sunlight4d/node-mysql-image:v1.0.0
+docker push tuanflute275/node-mysql-image:v1.0.0
 
 Create container from your "custom image":
 
@@ -167,13 +167,13 @@ Create container from your "custom image":
     -e MYSQL_USER=root \
     -e MYSQL_PASSWORD=Abc@123456789 \
     -e MYSQL_DB=todoDB \
-    sunlight4d/node-mysql-image:v1.0.1 \
+    tuanflute275/node-mysql-image:v1.0.1 \
     sh -c "yarn install && yarn run:dev"
 
 Update version:
 
-    docker tag node-mysql-image:latest sunlight4d/node-mysql-image:v1.0.1
-    docker push sunlight4d/node-mysql-image:v1.0.1
+    docker tag node-mysql-image:latest tuanflute275/node-mysql-image:v1.0.1
+    docker push tuanflute275/node-mysql-image:v1.0.1
 
 Create container with params/configurations
 
