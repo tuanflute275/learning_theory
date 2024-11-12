@@ -1,0 +1,193 @@
+https://github.com/ServiceStack/redis-windows
+=============================================================================================================================================
+						CÁC CÂU LỆNH CƠ BẢN REDIS
+==================================================================================================================================================
+# Kết nối đến Redis CLI
+redis-cli
+
+# Kiểm tra xem Redis đang hoạt động
+ping
+===> Ví dụ: ping
+===> Kết quả: PONG
+
+# Thêm một cặp key-value
+SET key_name "value"
+===> Ví dụ: SET str "This is a string"
+===> Kết quả: OK
+
+# Lấy giá trị của một key
+GET key_name
+===> Ví dụ: GET str
+===> Kết quả: "This is a string"
+
+# Thêm nhiều cặp key-value
+MSET key1 "value1" key2 "value2" key3 "value3"
+===> Ví dụ: MSET name "Alice" age "25" city "Hanoi"
+===> Kết quả: OK
+
+# Lấy giá trị của nhiều key
+MGET key1 key2 key3
+===> Ví dụ: MGET name age city
+===> Kết quả: "Alice" "25" "Hanoi"
+
+# Lấy giá trị trong khoảng
+GETRANGE key_name start end
+===> Ví dụ: GETRANGE str 0 3
+===> Kết quả: "This"
+
+# Lấy độ dài của một chuỗi
+STRLEN key_name
+===> Ví dụ: STRLEN str
+===> Kết quả: 16
+
+# Xóa một key
+DEL key_name
+===> Ví dụ: DEL str
+===> Kết quả: (integer) 1
+
+# Kiểm tra sự tồn tại của một key
+EXISTS key_name
+===> Ví dụ: EXISTS name
+===> Kết quả: (integer) 1
+
+# Thiết lập thời gian hết hạn cho một key (tính theo giây)
+EXPIRE key_name seconds
+===> Ví dụ: EXPIRE name 60
+===> Kết quả: (integer) 1
+
+# Kiểm tra thời gian sống còn lại của một key
+TTL key_name
+===> Ví dụ: TTL name
+===> Kết quả: 60
+
+# Lấy tất cả các key phù hợp với một mẫu
+KEYS pattern*
+===> Ví dụ: KEYS user:*
+===> Kết quả: "user:name" "user:age" "user:city"
+
+# Xóa tất cả dữ liệu trong Redis
+FLUSHALL
+===> Ví dụ: FLUSHALL
+===> Kết quả: OK
+
+# Duyệt qua các key theo mẫu
+SCAN 0 MATCH pattern*
+===> Ví dụ: SCAN 0 MATCH user:*
+===> Kết quả: danh sách các key phù hợp với mẫu
+
+# Thiết lập một key với thời gian hết hạn
+SETEX key_name seconds "value"
+===> Ví dụ: SETEX session:active 300 "user123"
+===> Kết quả: OK
+
+# Tăng giá trị của một key số nguyên lên 1
+INCR key_name
+===> Ví dụ: INCR counter
+===> Kết quả: (integer) 1
+
+# Tăng giá trị của một key số nguyên lên một giá trị cụ thể
+INCRBY key_name increment
+===> Ví dụ: INCRBY counter 5
+===> Kết quả: (integer) 6
+
+# Giảm giá trị của một key số nguyên xuống 1
+DECR key_name
+===> Ví dụ: DECR counter
+===> Kết quả: (integer) 5
+
+# Giảm giá trị của một key số nguyên xuống một giá trị cụ thể
+DECRBY key_name decrement
+===> Ví dụ: DECRBY counter 3
+===> Kết quả: (integer) 2
+
+# Thêm một giá trị vào danh sách
+LPUSH list_name "value"
+===> Ví dụ: LPUSH tasks "task1"
+===> Kết quả: (integer) 1
+
+# Lấy giá trị từ danh sách
+LRANGE list_name start end
+===> Ví dụ: LRANGE tasks 0 -1
+===> Kết quả: "task1" "task2"
+
+# Xóa một phần tử trong danh sách
+LREM list_name count "value"
+===> Ví dụ: LREM tasks 1 "task1"
+===> Kết quả: (integer) 1
+
+# Đặt một hash với nhiều trường và giá trị
+HMSET hash_name field1 "value1" field2 "value2"
+===> Ví dụ: HMSET user:1 name "Alice" age "25"
+===> Kết quả: OK
+
+# Lấy tất cả các trường và giá trị từ một hash
+HGETALL hash_name
+===> Ví dụ: HGETALL user:1
+===> Kết quả: "name" "Alice" "age" "25"
+
+# Xóa một trường trong hash
+HDEL hash_name field_name
+===> Ví dụ: HDEL user:1 age
+===> Kết quả: (integer) 1
+
+# Thêm một phần tử vào một tập hợp (set)
+SADD set_name "value"
+===> Ví dụ: SADD languages "Python"
+===> Kết quả: (integer) 1
+
+# Lấy tất cả các phần tử trong tập hợp
+SMEMBERS set_name
+===> Ví dụ: SMEMBERS languages
+===> Kết quả: "Python"
+
+# Kiểm tra xem một giá trị có thuộc tập hợp không
+SISMEMBER set_name "value"
+===> Ví dụ: SISMEMBER languages "Python"
+===> Kết quả: (integer) 1
+
+# Xóa một phần tử trong tập hợp
+SREM set_name "value"
+===> Ví dụ: SREM languages "Python"
+===> Kết quả: (integer) 1
+
+# Thêm một giá trị vào sorted set với điểm (score)
+ZADD sorted_set_name score "value"
+===> Ví dụ: ZADD leaderboard 100 "Alice"
+===> Kết quả: (integer) 1
+
+# Lấy tất cả các phần tử trong sorted set theo thứ tự tăng dần
+ZRANGE sorted_set_name start end WITHSCORES
+===> Ví dụ: ZRANGE leaderboard 0 -1 WITHSCORES
+===> Kết quả: "Alice" "100"
+
+# Lấy tất cả các phần tử trong sorted set theo thứ tự giảm dần
+ZREVRANGE sorted_set_name start end WITHSCORES
+===> Ví dụ: ZREVRANGE leaderboard 0 -1 WITHSCORES
+===> Kết quả: "Alice" "100"
+
+# Xóa một phần tử trong sorted set
+ZREM sorted_set_name "value"
+===> Ví dụ: ZREM leaderboard "Alice"
+===> Kết quả: (integer) 1
+
+# Đổi tên một key
+RENAME old_key_name new_key_name
+===> Ví dụ: RENAME name full_name
+===> Kết quả: OK
+
+# Tạo bản sao của một key
+DUMP key_name
+===> Ví dụ: DUMP full_name
+===> Kết quả: chuỗi byte của giá trị key
+
+# Khôi phục một key từ dữ liệu dump
+RESTORE key_name ttl serialized_value
+===> Ví dụ: RESTORE restored_name 0 "\x00\x05Alice\x06\x00\xf8\x9c#<"
+===> Kết quả: OK
+
+# Thoát khỏi Redis CLI
+exit
+
+
+
+	
