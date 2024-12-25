@@ -1,0 +1,124 @@
+
+TỔNG QUAN VỀ ELASTICSEARCH
+
+Elasticsearch là một công cụ tìm kiếm và phân tích dữ liệu mã nguồn mở, dựa trên Apache Lucene. 
+Nó được thiết kế để lưu trữ, tìm kiếm và phân tích dữ liệu phi cấu trúc một cách nhanh chóng và hiệu quả. 
+Ứng dụng phổ biến của Elasticsearch bao gồm:
+
+- Tìm kiếm toàn văn bản (Full-Text Search).
+- Phân tích log.
+- Phân tích dữ liệu thời gian thực.
+
+CÁC CÂU LỆNH THƯỜNG DÙNG TRONG ELASTICSEARCH
+
+1. Kiểm tra trạng thái cluster:
+   GET /_cluster/health
+
+2. Tạo một index mới:
+   PUT /ten_index
+
+3. Xóa một index:
+   DELETE /ten_index
+
+4. Thêm tài liệu vào index:
+   POST /ten_index/_doc/
+   {
+     "field1": "value1",
+     "field2": "value2"
+   }
+
+5. Lấy tài liệu theo ID:
+   GET /ten_index/_doc/1
+
+6. Tìm kiếm tất cả tài liệu trong một index:
+   GET /ten_index/_search
+
+7. Tìm kiếm với điều kiện:
+   GET /ten_index/_search
+   {
+     "query": {
+       "match": {
+         "field1": "value1"
+       }
+     }
+   }
+
+8. Cập nhật tài liệu:
+   POST /ten_index/_update/1
+   {
+     "doc": {
+       "field1": "new_value"
+     }
+   }
+
+9. Xóa tài liệu:
+   DELETE /ten_index/_doc/1
+
+10. Lấy thông tin về index:
+    GET /ten_index
+
+11. Tạo mapping cho index:
+    PUT /ten_index
+    {
+      "mappings": {
+        "properties": {
+          "field1": {
+            "type": "text"
+          },
+          "field2": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+
+12. Đếm số lượng tài liệu trong index:
+    GET /ten_index/_count
+
+
+13. Xem tất cả các chỉ mục (index)
+    GET _cat/indices?v
+
+    => cột heath có màu sắc nếu mà 
+		green tức là hoàn thành tạo cluster (Ok)
+		yellow là 1 cụm không có cluster    (OK)	
+		red cảnh báo bất thường		    (Not Ok)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
